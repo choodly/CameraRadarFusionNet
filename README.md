@@ -23,9 +23,9 @@ All required python packages can be installed with the crfnet pip package. Run t
 The network uses camera and radar inputs to detect objects. It can be used with the nuScenes dataset and extended to other radar and camera datasets. The nuScenes dataset can be downloaded [here](https://www.nuscenes.org/download).
 Pretrained weights are provided [here](https://syncandshare.lrz.de/dl/fi9RrjqLXyLZFuhwjk9KiKjc/crf_net.h5 ) (270MB).
 ## Start Training
-1. Create your desired [configuration](configs/README.md) for the CRF-Net. Start by making a copy of the [default_config](/configs/default.cfg)
-2. Execute `python train_crfnet.py`. This will train a model on a given dataset specified in the configs. The result will be stored in [saved models](/saved_models) and the logs in [tb_logs](/tb_logs).
-    * `--config <path to your config>` to use your config. Per default the config file found at [./configs/local.cfg](/configs/local.cfg) is used.
+1. Create your desired [configuration](crfnet/configs/README.md) for the CRF-Net. Start by making a copy of the [default_config](crfnet/configs/default.cfg)
+2. Execute `python train_crfnet.py`. This will train a model on a given dataset specified in the configs. The result will be stored in [saved_models](crfnet/saved_models) and the logs in [tb_logs](crfnet/tb_logs).
+    * `--config <path to your config>` to use your config. Per default the config file found at [./configs/local.cfg](crfnet/configs/local.cfg) is used.
 
 Example usage: 
 ```bash
@@ -65,13 +65,13 @@ python test_crfnet.py --model saved_models/crf_net.h5 --config configs/crf_net.c
 
 All main scripts depend on the following subfolders:
 
-1. [configs](configs/README.md) folder contains the config files. All the settings for the main scripts are described in this file. A default.cfg (configs/default.cfg) shows an exemplary config file. It is recommended to give each configuration a unique name, as models and tensorboard logs are also named after it.
+1. [configs](crfnet/configs/README.md) folder contains the config files. All the settings for the main scripts are described in this file. A default.cfg (configs/default.cfg) shows an exemplary config file. It is recommended to give each configuration a unique name, as models and tensorboard logs are also named after it.
 
-2. [data_processing](data_processing/README.md) folder contains all functions for preprocessing before the neural network. Data fusion functions are placed in this folder. VIsualization of the generated radar augmented image (RAI) is provided by the generator script for the corresponding data set.
+2. [data_processing](crfnet/data_processing/README.md) folder contains all functions for preprocessing before the neural network. Data fusion functions are placed in this folder. VIsualization of the generated radar augmented image (RAI) is provided by the generator script for the corresponding data set.
 
-3. [model](model/README.md) folder contains all the neural network models that can be used. Based on RetinaNet, architectures that fuse camera and radar data at the feature extractor or the FPN are stored here.
+3. [model](crfnet/model/README.md) folder contains all the neural network models that can be used. Based on RetinaNet, architectures that fuse camera and radar data at the feature extractor or the FPN are stored here.
 
-4. [utils](utils/README.md) utils folder contains helper functions that are needed in many places in this repository. 
+4. [utils](crfnet/utils/README.md) utils folder contains helper functions that are needed in many places in this repository. 
 
 
 ## Files
